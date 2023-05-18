@@ -13815,14 +13815,14 @@ div#featured-project-carousel {
 }
 
 .rn-nav-list .nav-item {
-    flex-basis: 25%;
+    flex-basis: 33%;
     text-align: center;
     margin-top: 0;
 }
 
 @media only screen and (min-width: 768px) and (max-width: 991px) {
     .rn-nav-list .nav-item {
-        flex-basis: 25%;
+        flex-basis: 33%;
     }
 }
 
@@ -19872,4 +19872,10 @@ body.white-version {
     color: var(--color-white) !important;
 }
 
+
+.pfp {
+    border-radius: 5px;
+    width: 100%;
+    
+}
 /*# sourceMappingURL=../maps/style.css.map */
