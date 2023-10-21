@@ -1,3 +1,23 @@
+body{
+    font-family: Roboto, Mono, sans-serif;
+    letter-spacing: 0.12em;
+}
+
+a{
+    text-decoration: none;
+    color: inherit;
+}
+a:hover{
+    color: #0d6efd;
+}
+
+.navbar-brand{
+    color: #adb5bd;
+}
+.navbar-brand:hover{
+    color: #027a92;
+}
+
 .brand-text-linkedin:hover{
     color:#0d6efd;
 }
@@ -8,4 +28,72 @@
 
 .brand-text-instagram:hover{
     color:#dc3545;
+}
+
+/* Default styles for the image */
+.profile-pic {
+    max-width: 100%; /* Make sure the image doesn't exceed its container's width */
+}
+
+
+
+.other-project-btn{
+    position: relative;
+    text-decoration: none;
+    color: #ffc107; /* Set your preferred color */
+}
+
+.other-project-btn::before {
+    content: "";
+    position: absolute;
+    width: 0;
+    height: 2px; /* Set the height of the underline */
+    bottom: 0;
+    left: 0;
+    background-color: #ffc107; /* Set the color of the underline */
+    visibility: hidden;
+    transform-origin: left; /* Set the transform origin to left */
+    transition: all 0.3s ease-in-out; /* Set the transition properties */
+  }
+  
+  .other-project-btn:hover::before {
+    visibility: visible;
+    width: 100%;
+  }
+  
+/* Adjust the size for mobile devices (up to 767px width) */
+@media (max-width: 767px) {
+    .profile-pic {
+        max-width: 50%; /* Set a maximum width for mobile devices */
+        height: auto; /* Maintain aspect ratio */
+    }
+    .parent-container{
+        padding-left: 5%;
+        padding-right: 5%;
+    }
+
+    .project-hint {
+        display: none; /* Show the span on desktop */
+    }
+    .other-projects{
+        display: none;
+    }
+    
+}
+
+/* Adjust the size for desktop devices (768px width and above) */
+@media (min-width: 768px) {
+    .profile-pic {
+        max-width: 100%; /* Set a maximum width for desktop */
+        height: auto; /* Maintain aspect ratio */
+    }
+
+    .project-hint {
+        display: inline; /* Show the span on desktop */
+    }
+    .other-projects{
+        display: inline;
+    }
+    
+
 }
