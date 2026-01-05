@@ -34,6 +34,7 @@
               twinkle: "twinkle 2s ease-in-out infinite",
               fall: "fall linear infinite",
               "earth-rotate": "earthRotate 10s linear infinite",
+              "slide-down": "slideDown 0.3s ease-out forwards",
             },
             keyframes: {
               fadeInUp: {
@@ -75,6 +76,10 @@
               earthRotate: {
                 "0%": { transform: "translateX(0)" },
                 "100%": { transform: "translateX(-150px)" },
+              },
+              slideDown: {
+                "0%": { opacity: "0", transform: "translateY(-20px)" },
+                "100%": { opacity: "1", transform: "translateY(0)" },
               },
             },
           },

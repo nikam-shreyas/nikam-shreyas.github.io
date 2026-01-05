@@ -92,18 +92,18 @@ const ContactRow = ({
 
 // Static skills data with randomized proficiency for the session
 const SKILLS_DATA = [
-  "TypeScript",
-  "React",
-  "Node.js",
   "Python",
   "FastAPI",
-  "PyTorch",
+  "React",
+  "Node.js",
   "AWS",
+  "LangChain",
+  "PyTorch",
   "Docker",
   "PostgreSQL",
   "Redis",
   "RAG",
-  "LangChain",
+  "TypeScript",
 ].map((skill) => ({
   name: skill,
   // Random proficiency between 60% and 95%
@@ -164,6 +164,7 @@ const FallingCircles = () => {
 
 export const Home: React.FC<HomeProps> = ({ setPage }) => {
   const [now, setNow] = useState(new Date());
+  const [showEmailToast, setShowEmailToast] = useState(false);
 
   useEffect(() => {
     const timer = setInterval(() => setNow(new Date()), 1000);
@@ -182,6 +183,13 @@ export const Home: React.FC<HomeProps> = ({ setPage }) => {
     minute: "2-digit",
     hour12: false,
   });
+
+  const handleEmailClick = (e: React.MouseEvent) => {
+    e.preventDefault();
+    navigator.clipboard.writeText("shreyas.s.nikam@gmail.com");
+    setShowEmailToast(true);
+    setTimeout(() => setShowEmailToast(false), 3000);
+  };
 
   return (
     <div className="w-full min-h-screen bg-black flex items-center justify-center p-4 md:p-8">
@@ -249,15 +257,27 @@ export const Home: React.FC<HomeProps> = ({ setPage }) => {
                 icon={<LeetCodeIcon />}
                 className="w-12 h-12 md:w-14 md:h-14"
               />
-              <ThreeDIcon
-                href="mailto:shreyas.s.nikam@gmail.com"
-                color="#EA4335"
-                icon={<Mail />}
-                className="w-12 h-12 md:w-14 md:h-14"
-              />
+              <div onClick={handleEmailClick}>
+                <ThreeDIcon
+                  href="mailto:shreyas.s.nikam@gmail.com"
+                  color="#EA4335"
+                  icon={<Mail />}
+                  className="w-12 h-12 md:w-14 md:h-14"
+                />
+              </div>
             </div>
           </div>
         </div>
+
+        {/* Email Toast Notification */}
+        {showEmailToast && (
+          <div className="fixed top-8 left-1/2 -translate-x-1/2 z-50 animate-slide-down">
+            <div className="bg-white text-black px-6 py-3 rounded-full shadow-lg flex items-center gap-3 border border-gray-200">
+              <Check className="w-5 h-5 text-green-500" />
+              <span className="font-medium">Email copied to clipboard!</span>
+            </div>
+          </div>
+        )}
 
         {/* 2. Column: About Me + Skills (1x2 on Desktop) */}
         <div className="col-span-1 md:col-span-1 md:row-span-2 flex flex-col gap-4">
@@ -370,7 +390,7 @@ export const Home: React.FC<HomeProps> = ({ setPage }) => {
 
           <div className="flex flex-col gap-2 relative z-10 mt-auto">
             {/* Top: Location Badge */}
-            <div className="w-fit text-[10px] text-indigo-300 font-mono bg-indigo-500/10 px-2 py-0.5 rounded border border-indigo-500/20 mb-2">
+            <div className="w-fit text-[10px] text-indigo-300 mb-2">
               Boston, MA
             </div>
 
